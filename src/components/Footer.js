@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Utensils, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Github } from "lucide-react";
+import { Utensils, Mail, Phone, MapPin, Globe, Send, Heart, Compass } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -75,16 +75,16 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white uppercase tracking-wider">Follow Us</h3>
             <div className="flex gap-4">
               <a href="#" className="h-9 w-9 flex items-center justify-center rounded-xl bg-zinc-150 border border-zinc-200 text-zinc-600 hover:bg-emerald-50 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-emerald-950/20 dark:hover:text-emerald-400 transition-all">
-                <Facebook className="h-4 w-4" />
+                <Globe className="h-4 w-4" />
               </a>
               <a href="#" className="h-9 w-9 flex items-center justify-center rounded-xl bg-zinc-150 border border-zinc-200 text-zinc-600 hover:bg-emerald-50 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-emerald-950/20 dark:hover:text-emerald-400 transition-all">
-                <Twitter className="h-4 w-4" />
+                <Send className="h-4 w-4" />
               </a>
               <a href="#" className="h-9 w-9 flex items-center justify-center rounded-xl bg-zinc-150 border border-zinc-200 text-zinc-600 hover:bg-emerald-50 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-emerald-950/20 dark:hover:text-emerald-400 transition-all">
-                <Instagram className="h-4 w-4" />
+                <Heart className="h-4 w-4" />
               </a>
               <a href="#" className="h-9 w-9 flex items-center justify-center rounded-xl bg-zinc-150 border border-zinc-200 text-zinc-600 hover:bg-emerald-50 hover:text-emerald-600 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-emerald-950/20 dark:hover:text-emerald-400 transition-all">
-                <Github className="h-4 w-4" />
+                <Compass className="h-4 w-4" />
               </a>
             </div>
           </div>
