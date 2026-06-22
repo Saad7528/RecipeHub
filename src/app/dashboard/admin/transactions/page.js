@@ -8,6 +8,7 @@ export default function AdminTransactions() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Transactions Log | RecipeHub";
     fetchTransactions();
   }, []);
 
