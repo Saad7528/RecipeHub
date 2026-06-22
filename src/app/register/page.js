@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,6 +10,10 @@ import confetti from "canvas-confetti";
 export default function RegisterPage() {
   const router = useRouter();
   const { register } = useAuth();
+
+  useEffect(() => {
+    document.title = "Sign Up | RecipeHub";
+  }, []);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
