@@ -27,6 +27,7 @@ export default function MyRecipes() {
   const [editSubmitting, setEditSubmitting] = useState(false);
 
   useEffect(() => {
+    document.title = "My Recipes | RecipeHub";
     fetchMyRecipes();
   }, []);
 
