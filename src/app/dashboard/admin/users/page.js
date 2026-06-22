@@ -9,6 +9,7 @@ export default function ManageUsers() {
   const [toastMsg, setToastMsg] = useState("");
 
   useEffect(() => {
+    document.title = "Manage Users | RecipeHub";
     fetchUsers();
   }, []);
 
