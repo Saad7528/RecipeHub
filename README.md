@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RecipeHub — Recipe Sharing Platform
 
-## Getting Started
+Welcome to **RecipeHub**, a full-stack recipe sharing web application built with **Next.js (App Router)**, **Tailwind CSS v4**, and **MongoDB**. Food enthusiasts can publish recipes, browse and search culinary creations, save favorites, purchase paid signature dishes, and upgrade to premium membership for unlimited uploads.
 
-First, run the development server:
+---
 
+## 🌟 Key Features
+- **Responsive Premium UI/UX**: Exquisite dark & light theme toggle, smooth page-transitions with Framer Motion, and celebratory payment triggers.
+- **Role-Based Authentication**: Secure custom JWT session tokens stored in HttpOnly cookies, Google SSO options, and edge-native routing guards.
+- **Interactive Recipe Details**: Likes counter, favorites bookmarker, and custom abuse-reports modals.
+- **Stripe Payments Integration**: Checkout sessions supporting individual recipe purchases and Premium Account memberships ($19.99).
+- **User Dashboard**: Statistics logs, recipes management, profile editor, and locked uploads checking.
+- **Admin Dashboard**: Consolidated overview charts, block/unblock members manager, recipe moderator, reports panel, and Stripe transactions logs.
+
+---
+
+## 🛠️ Tech Stack
+- **Framework**: Next.js 15+ (App Router)
+- **Styling**: Tailwind CSS v4, Lucide Icons, Framer Motion
+- **Database**: MongoDB (Mongoose models)
+- **Authentication**: JWT (HttpOnly cookies via Universal jose library)
+- **Payments**: Stripe Checkout APIs (with development mock fallbacks)
+- **Image Hosting**: ImgBB API uploads
+- **Celebrations**: Canvas Confetti
+
+---
+
+## 💻 Setup & Installation
+
+### 1. Clone the repository and install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Saad7528/RecipeHub.git
+cd recipehub
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+Create a `.env.local` file in the root directory and append:
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/recipehub
+JWT_SECRET=your_jwt_secret_key_here
+NEXT_PUBLIC_IMGBB_API_KEY=your_imgbb_api_key_here
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# STRIPE CREDENTIALS (Optional - falls back to Mock local checkout if missing/blank)
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# BASE URL (for production redirects)
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
 
-## Learn More
+### 3. Database Seeding (Crucial for Reviewers)
+Start the development server:
+```bash
+npm run dev
+```
+Then, visit the seed route to automatically wipe and populate the database with default accounts and 6 sample recipes of varying difficulty, category, and pricing:
+👉 **[http://localhost:3000/api/seed?clean=true](http://localhost:3000/api/seed?clean=true)**
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Reviewer Login Credentials
+Once the seeding script completes, use the following credentials to evaluate specific roles:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 👑 Admin Credentials
+- **Email**: `admin_chef@recipehub.com`
+- **Password**: `Admin123`
 
-## Deploy on Vercel
+### 🍳 Premium Chef Credentials
+- **Email**: `chef_test@recipehub.com`
+- **Password**: `User1234`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🥑 Standard Foodie Credentials
+- **Email**: `foodie_test@recipehub.com`
+- **Password**: `User1234`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧪 Build and Lint Checks
+Validate code correctness prior to production delivery:
+- Run ESLint check: `npm run lint`
+- Compile production bundle: `npm run build`
