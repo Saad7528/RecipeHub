@@ -29,17 +29,6 @@ export default function BrowseRecipes() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
-  // Synchronize state with search query param changes (e.g. from hero redirect)
-  useEffect(() => {
-    const q = searchParams.get("search") || "";
-    setSearch(q);
-    setPage(1);
-  }, [searchParams]);
-
-  useEffect(() => {
-    fetchRecipes();
-  }, [selectedCategories, selectedCuisine, selectedDifficulty, page, searchParams]);
-
   const fetchRecipes = async () => {
     try {
       setLoading(true);
@@ -67,6 +56,21 @@ export default function BrowseRecipes() {
       setLoading(false);
     }
   };
+
+  // Synchronize state with search query param changes (e.g. from hero redirect)
+  useEffect(() => {
+    const q = searchParams.get("search") || "";
+    setTimeout(() => {
+      setSearch(q);
+      setPage(1);
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  useEffect(() => {
+    fetchRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategories, selectedCuisine, selectedDifficulty, page, searchParams]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
