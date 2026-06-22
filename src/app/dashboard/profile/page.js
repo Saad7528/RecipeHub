@@ -16,6 +16,10 @@ export default function ProfileSettings() {
   const [toastMsg, setToastMsg] = useState("");
 
   useEffect(() => {
+    document.title = "Profile Settings | RecipeHub";
+  }, []);
+
+  useEffect(() => {
     if (user) {
       setName(user.name || "");
       setImagePreview(user.image || "");
