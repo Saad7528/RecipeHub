@@ -9,6 +9,7 @@ export default function MyPurchasedRecipes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Purchased Recipes | RecipeHub";
     fetchPurchasedRecipes();
   }, []);
 
