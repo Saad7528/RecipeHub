@@ -12,6 +12,10 @@ export default function BrowseRecipes() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  useEffect(() => {
+    document.title = "Browse Recipes - RecipeHub";
+  }, []);
+
   // Load initial search query if redirected from Hero
   const initialSearch = searchParams.get("search") || "";
 
