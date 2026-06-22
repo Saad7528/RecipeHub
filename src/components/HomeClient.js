@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -9,6 +9,10 @@ import { Search, Clock, Flame, ShieldCheck, Heart, Award, ArrowRight, Star, User
 export default function HomeClient({ featuredRecipes = [], popularRecipes = [] }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    document.title = "Home | RecipeHub";
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
