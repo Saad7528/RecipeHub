@@ -8,11 +8,6 @@ export default function MyPurchasedRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    document.title = "Purchased Recipes | RecipeHub";
-    fetchPurchasedRecipes();
-  }, []);
-
   const fetchPurchasedRecipes = async () => {
     try {
       setLoading(true);
@@ -27,6 +22,14 @@ export default function MyPurchasedRecipes() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Purchased Recipes | RecipeHub";
+    setTimeout(() => {
+      fetchPurchasedRecipes();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return (

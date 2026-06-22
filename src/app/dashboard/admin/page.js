@@ -8,11 +8,6 @@ export default function AdminStats() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    document.title = "Admin Stats | RecipeHub";
-    fetchAdminStats();
-  }, []);
-
   const fetchAdminStats = async () => {
     try {
       setLoading(true);
@@ -27,6 +22,14 @@ export default function AdminStats() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Admin Stats | RecipeHub";
+    setTimeout(() => {
+      fetchAdminStats();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return (

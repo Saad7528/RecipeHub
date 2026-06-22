@@ -8,11 +8,6 @@ export default function ManageUsers() {
   const [loading, setLoading] = useState(true);
   const [toastMsg, setToastMsg] = useState("");
 
-  useEffect(() => {
-    document.title = "Manage Users | RecipeHub";
-    fetchUsers();
-  }, []);
-
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -27,6 +22,14 @@ export default function ManageUsers() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Manage Users | RecipeHub";
+    setTimeout(() => {
+      fetchUsers();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAction = async (targetUserId, action) => {
     const confirmationMsg = 

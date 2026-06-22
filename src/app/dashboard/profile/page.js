@@ -21,8 +21,10 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     if (user) {
-      setName(user.name || "");
-      setImagePreview(user.image || "");
+      setTimeout(() => {
+        setName(user.name || "");
+        setImagePreview(user.image || "");
+      }, 0);
     }
   }, [user]);
 

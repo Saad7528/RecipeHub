@@ -11,11 +11,6 @@ export default function DashboardOverview() {
   const [loading, setLoading] = useState(true);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
-  useEffect(() => {
-    document.title = "Dashboard | RecipeHub";
-    fetchStats();
-  }, []);
-
   const fetchStats = async () => {
     try {
       setLoading(true);
@@ -30,6 +25,14 @@ export default function DashboardOverview() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Dashboard | RecipeHub";
+    setTimeout(() => {
+      fetchStats();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleUpgrade = async () => {
     try {

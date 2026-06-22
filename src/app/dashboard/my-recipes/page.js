@@ -26,11 +26,6 @@ export default function MyRecipes() {
   const [editInstructions, setEditInstructions] = useState("");
   const [editSubmitting, setEditSubmitting] = useState(false);
 
-  useEffect(() => {
-    document.title = "My Recipes | RecipeHub";
-    fetchMyRecipes();
-  }, []);
-
   const fetchMyRecipes = async () => {
     try {
       setLoading(true);
@@ -46,6 +41,14 @@ export default function MyRecipes() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "My Recipes | RecipeHub";
+    setTimeout(() => {
+      fetchMyRecipes();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this recipe? This action is permanent.")) return;

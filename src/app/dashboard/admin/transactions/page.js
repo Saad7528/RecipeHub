@@ -7,11 +7,6 @@ export default function AdminTransactions() {
   const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    document.title = "Transactions Log | RecipeHub";
-    fetchTransactions();
-  }, []);
-
   const fetchTransactions = async () => {
     try {
       setLoading(true);
@@ -26,6 +21,14 @@ export default function AdminTransactions() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Transactions Log | RecipeHub";
+    setTimeout(() => {
+      fetchTransactions();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return (

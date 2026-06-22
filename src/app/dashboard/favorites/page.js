@@ -9,11 +9,6 @@ export default function MyFavorites() {
   const [loading, setLoading] = useState(true);
   const [toastMsg, setToastMsg] = useState("");
 
-  useEffect(() => {
-    document.title = "My Favorites | RecipeHub";
-    fetchFavorites();
-  }, []);
-
   const fetchFavorites = async () => {
     try {
       setLoading(true);
@@ -28,6 +23,14 @@ export default function MyFavorites() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "My Favorites | RecipeHub";
+    setTimeout(() => {
+      fetchFavorites();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleRemove = async (id) => {
     try {

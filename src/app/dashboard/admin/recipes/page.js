@@ -25,11 +25,6 @@ export default function ManageRecipes() {
   const [editInstructions, setEditInstructions] = useState("");
   const [editSubmitting, setEditSubmitting] = useState(false);
 
-  useEffect(() => {
-    document.title = "Manage Recipes | RecipeHub";
-    fetchRecipes();
-  }, []);
-
   const fetchRecipes = async () => {
     try {
       setLoading(true);
@@ -44,6 +39,14 @@ export default function ManageRecipes() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Manage Recipes | RecipeHub";
+    setTimeout(() => {
+      fetchRecipes();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this recipe? This action is permanent and cannot be undone.")) return;

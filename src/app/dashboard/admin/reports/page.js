@@ -9,11 +9,6 @@ export default function RecipeReports() {
   const [loading, setLoading] = useState(true);
   const [toastMsg, setToastMsg] = useState("");
 
-  useEffect(() => {
-    document.title = "Recipe Reports | RecipeHub";
-    fetchReports();
-  }, []);
-
   const fetchReports = async () => {
     try {
       setLoading(true);
@@ -28,6 +23,14 @@ export default function RecipeReports() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Recipe Reports | RecipeHub";
+    setTimeout(() => {
+      fetchReports();
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDismiss = async (reportId) => {
     if (!confirm("Are you sure you want to dismiss this report? The recipe will remain active.")) return;

@@ -23,17 +23,6 @@ export default function PaymentSuccess() {
   const recipeId = searchParams.get("recipeId");
   const amount = searchParams.get("amount");
 
-  useEffect(() => {
-    document.title = "Payment Success | RecipeHub";
-  }, []);
-
-  useEffect(() => {
-    if (sessionId && !verifiedRef.current) {
-      verifiedRef.current = true;
-      verifyPayment();
-    }
-  }, [sessionId]);
-
   const verifyPayment = async () => {
     try {
       setVerifying(true);
@@ -68,6 +57,20 @@ export default function PaymentSuccess() {
       setVerifying(false);
     }
   };
+
+  useEffect(() => {
+    document.title = "Payment Success | RecipeHub";
+  }, []);
+
+  useEffect(() => {
+    if (sessionId && !verifiedRef.current) {
+      verifiedRef.current = true;
+      setTimeout(() => {
+        verifyPayment();
+      }, 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId]);
 
   const triggerConfetti = () => {
     const duration = 3 * 1000;
