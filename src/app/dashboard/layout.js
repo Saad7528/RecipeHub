@@ -19,6 +19,7 @@ import {
   X,
   Award,
   ChevronRight,
+  Loader2,
 } from "lucide-react";
 
 export default function DashboardLayout({ children }) {
@@ -55,7 +56,43 @@ export default function DashboardLayout({ children }) {
     { name: "Transactions", href: "/dashboard/admin/transactions", icon: Receipt },
   ];
 
-  const SidebarContent = () => (
+  return (
+    <div className="flex flex-1 flex-col md:flex-row min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+      
+      {/* Mobile Toggle Top Bar */}
+      <div className="flex items-center justify-between border-b border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-950 md:hidden">
+        <span className="text-sm font-bold text-zinc-800 dark:text-white">Dashboard</span>
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="rounded-lg border border-zinc-250 p-1.5 text-zinc-500 dark:border-zinc-800"
+        >
+          {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {/* Mobile Slide-out Sidebar */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-40 flex md:hidden">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsSidebarOpen(false)} />
+          <div className="relative flex w-64 max-w-xs flex-1 flex-col bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 animate-in slide-in-from-left duration-250">
+            <SidebarContent user={user} pathname={pathname} setIsSidebarOpen={setIsSidebarOpen} userNavigation={userNavigation} adminNavigation={adminNavigation} />
+          </div>
+        </div>
+      )}
+
+      {/* Desktop Sidebar (Permanent) */}
+      <aside className="hidden md:block w-64 flex-shrink-0 bg-white border-r border-zinc-200/80 dark:bg-zinc-950 dark:border-zinc-850">
+        <SidebarContent user={user} pathname={pathname} setIsSidebarOpen={setIsSidebarOpen} userNavigation={userNavigation} adminNavigation={adminNavigation} />
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex-1 p-6 md:p-10 max-w-5xl overflow-x-hidden">
+        {children}
+      </main>
+    </div>
+  );
+function SidebarContent({ user, pathname, setIsSidebarOpen, userNavigation, adminNavigation }) {
+  return (
     <div className="flex h-full flex-col justify-between p-4">
       <div className="space-y-6">
         {/* User Card */}
@@ -134,42 +171,6 @@ export default function DashboardLayout({ children }) {
       </div>
     </div>
   );
-
-  return (
-    <div className="flex flex-1 flex-col md:flex-row min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
-      
-      {/* Mobile Toggle Top Bar */}
-      <div className="flex items-center justify-between border-b border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-950 md:hidden">
-        <span className="text-sm font-bold text-zinc-800 dark:text-white">Dashboard</span>
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="rounded-lg border border-zinc-250 p-1.5 text-zinc-500 dark:border-zinc-800"
-        >
-          {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {/* Mobile Slide-out Sidebar */}
-      {isSidebarOpen && (
-        <div className="fixed inset-0 z-40 flex md:hidden">
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsSidebarOpen(false)} />
-          <div className="relative flex w-64 max-w-xs flex-1 flex-col bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 animate-in slide-in-from-left duration-250">
-            <SidebarContent />
-          </div>
-        </div>
-      )}
-
-      {/* Desktop Sidebar (Permanent) */}
-      <aside className="hidden md:block w-64 flex-shrink-0 bg-white border-r border-zinc-200/80 dark:bg-zinc-950 dark:border-zinc-850">
-        <SidebarContent />
-      </aside>
-
-      {/* Main Content Area */}
-      <main className="flex-1 p-6 md:p-10 max-w-5xl overflow-x-hidden">
-        {children}
-      </main>
-    </div>
-  );
 }
 
 function LoaderSpinner() {
@@ -180,6 +181,3 @@ function LoaderSpinner() {
     </div>
   );
 }
-
-// Inline fallback loader helper
-import { Loader2 } from "lucide-react";
