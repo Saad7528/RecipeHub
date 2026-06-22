@@ -12,6 +12,7 @@ export default function DashboardOverview() {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   useEffect(() => {
+    document.title = "Dashboard | RecipeHub";
     fetchStats();
   }, []);
 
