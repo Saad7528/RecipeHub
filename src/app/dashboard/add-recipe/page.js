@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, X, Upload, Loader2, Sparkles, AlertCircle } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -10,6 +10,10 @@ const CUISINES = ["Italian", "Mexican", "Indian", "Chinese", "American", "Japane
 
 export default function AddRecipe() {
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Add Recipe | RecipeHub";
+  }, []);
 
   const [recipeName, setRecipeName] = useState("");
   const [category, setCategory] = useState("Breakfast");
