@@ -24,6 +24,10 @@ export default function PaymentSuccess() {
   const amount = searchParams.get("amount");
 
   useEffect(() => {
+    document.title = "Payment Success | RecipeHub";
+  }, []);
+
+  useEffect(() => {
     if (sessionId && !verifiedRef.current) {
       verifiedRef.current = true;
       verifyPayment();
