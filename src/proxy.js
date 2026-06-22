@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyToken } from "./lib/jwt";
 
-export async function middleware(req) {
+export async function proxy(req) {
   const token = req.cookies.get("token")?.value;
   const { pathname } = req.nextUrl;
 
