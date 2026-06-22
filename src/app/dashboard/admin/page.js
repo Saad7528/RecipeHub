@@ -9,6 +9,7 @@ export default function AdminStats() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Admin Stats | RecipeHub";
     fetchAdminStats();
   }, []);
 
