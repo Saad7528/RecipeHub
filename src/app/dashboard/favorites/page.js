@@ -10,6 +10,7 @@ export default function MyFavorites() {
   const [toastMsg, setToastMsg] = useState("");
 
   useEffect(() => {
+    document.title = "My Favorites | RecipeHub";
     fetchFavorites();
   }, []);
 
