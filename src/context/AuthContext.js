@@ -10,10 +10,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    checkSession();
-  }, []);
-
   const checkSession = async () => {
     try {
       const res = await fetch("/api/auth/me");
@@ -30,6 +26,10 @@ export function AuthProvider({ children }) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
 
   const login = async (email, password, redirectPath = "/dashboard") => {
     try {
