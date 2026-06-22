@@ -31,7 +31,6 @@ export function AuthProvider({ children }) {
     setTimeout(() => {
       checkSession();
     }, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = async (email, password, redirectPath = "/dashboard") => {

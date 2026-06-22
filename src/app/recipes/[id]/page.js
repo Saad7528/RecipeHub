@@ -25,19 +25,6 @@ export default function RecipeDetails() {
   const [purchaseLoading, setPurchaseLoading] = useState(false);
   const [feedbackMsg, setFeedbackMsg] = useState("");
 
-  useEffect(() => {
-    fetchRecipeDetails();
-    if (user) {
-      checkIfFavorited();
-    }
-  }, [id, user]);
-
-  useEffect(() => {
-    if (recipe) {
-      document.title = `${recipe.recipeName} - RecipeHub`;
-    }
-  }, [recipe]);
-
   const fetchRecipeDetails = async () => {
     try {
       setLoading(true);
@@ -69,6 +56,22 @@ export default function RecipeDetails() {
       console.error("Error checking favorites", err);
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetchRecipeDetails();
+      if (user) {
+        checkIfFavorited();
+      }
+    }, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, user]);
+
+  useEffect(() => {
+    if (recipe) {
+      document.title = `${recipe.recipeName} - RecipeHub`;
+    }
+  }, [recipe]);
 
   const handleLike = async () => {
     if (!user) {

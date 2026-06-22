@@ -64,11 +64,12 @@ export default function BrowseRecipes() {
       setSearch(q);
       setPage(1);
     }, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   useEffect(() => {
-    fetchRecipes();
+    setTimeout(() => {
+      fetchRecipes();
+    }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategories, selectedCuisine, selectedDifficulty, page, searchParams]);
 
