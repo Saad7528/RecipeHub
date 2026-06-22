@@ -91,6 +91,8 @@ export default function DashboardLayout({ children }) {
       </main>
     </div>
   );
+}
+
 function SidebarContent({ user, pathname, setIsSidebarOpen, userNavigation, adminNavigation }) {
   return (
     <div className="flex h-full flex-col justify-between p-4">
