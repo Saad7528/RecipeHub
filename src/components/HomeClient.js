@@ -339,7 +339,7 @@ export default function HomeClient({ featuredRecipes = [], popularRecipes = [] }
               <p className="text-sm font-semibold text-emerald-400 uppercase tracking-widest">Pastry Artist & Culinary Innovator</p>
               
               <blockquote className="text-lg italic text-zinc-200 border-l-4 border-emerald-500 pl-4 leading-relaxed">
-                &ldquo;Cooking isn't just about mixing ingredients; it's about translating memories and feelings onto a plate. RecipeHub connects me to thousands of people who share that exact same passion.&rdquo;
+                &ldquo;Cooking isn&apos;t just about mixing ingredients; it&apos;s about translating memories and feelings onto a plate. RecipeHub connects me to thousands of people who share that exact same passion.&rdquo;
               </blockquote>
 
               <div className="flex flex-wrap gap-4 text-xs font-bold text-zinc-300">
@@ -352,7 +352,7 @@ export default function HomeClient({ featuredRecipes = [], popularRecipes = [] }
                   href="/recipes"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white hover:bg-emerald-500 transition-colors shadow"
                 >
-                  Explore Vance's Pastries
+                  Explore Vance&apos;s Pastries
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
