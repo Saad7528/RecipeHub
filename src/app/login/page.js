@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -22,6 +22,10 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, loginWithGoogle } = useAuth();
+
+  useEffect(() => {
+    document.title = "Log In | RecipeHub";
+  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
