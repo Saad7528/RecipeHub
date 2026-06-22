@@ -10,6 +10,7 @@ export default function RecipeReports() {
   const [toastMsg, setToastMsg] = useState("");
 
   useEffect(() => {
+    document.title = "Recipe Reports | RecipeHub";
     fetchReports();
   }, []);
 
