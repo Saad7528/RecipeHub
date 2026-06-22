@@ -32,6 +32,12 @@ export default function RecipeDetails() {
     }
   }, [id, user]);
 
+  useEffect(() => {
+    if (recipe) {
+      document.title = `${recipe.recipeName} - RecipeHub`;
+    }
+  }, [recipe]);
+
   const fetchRecipeDetails = async () => {
     try {
       setLoading(true);
